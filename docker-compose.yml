@@ -2,7 +2,10 @@ version: '3.7'
 services:
 
   php:
-    image: php:8-fpm-alpine
+    build:
+      context: ./apps/okommerce
+      target: symfony_php
+
     expose:
       - 9000
     depends_on:
