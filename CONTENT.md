@@ -1,17 +1,18 @@
 [ ] (not too) simple PHP / Symfony backend  
+[ ] signed jwt auth
 [ ] 12-factor app  
-[ ] PgSQL persistence  
+[x] PgSQL persistence  
 [ ] Elasticsearch  
 [ ] Redis   
-[ ] fake fixture loading  
+[x] fake fixture loading  
 [ ] db import on launch  
-[ ] migrations  
-[ ] unit tests  
-[ ] behavioural backend tests  
+[x] migrations  
+[x] unit tests  
+[x] behavioural backend tests  
 [ ] React SPA Frontend  
 [ ] jest component tests  
 [ ] cypress acceptance tests  
-[ ] ci test on travis, circle, github actions  
+[/] ci test on travis, circle, github actions  
 [ ] deployed review environments  
 [ ] enforced commit conventions  
 

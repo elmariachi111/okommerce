@@ -38,6 +38,9 @@ jobs:
       run: |
         bin/console doctrine:migrations:migrate --env=test
         composer run-script test
+    
+    - name: Run BDD scenarios
+      run: ./vendor/bin/behat
 
     - name: Run phpcs
       run: ./vendor/bin/phpcs

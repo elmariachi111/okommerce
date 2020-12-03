@@ -70,10 +70,12 @@
         }
     },
     "require-dev": {
+        "friends-of-behat/symfony-extension": "^2.0",
         "hautelook/alice-bundle": "^2.8",
         "squizlabs/php_codesniffer": "^3.5",
         "symfony/maker-bundle": "^1.24",
         "symfony/phpunit-bridge": "^5.2",
-        "theofidry/alice-data-fixtures": "^1.3"
+        "theofidry/alice-data-fixtures": "^1.3",
+        "webmozart/assert": "^1.9"
     }
 }
