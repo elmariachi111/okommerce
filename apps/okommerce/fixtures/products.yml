@@ -1,0 +1,6 @@
+App\Entity\Product:
+    product_{1..10}:
+        uid: <uuid()>
+        title: <words(4, true)>
+        sku: <ean13()>
+        description: <paragraphs(3, true)>

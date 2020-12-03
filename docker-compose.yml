@@ -39,7 +39,7 @@ services:
     environment:
       POSTGRES_USER: example
       POSTGRES_PASSWORD: example
-
+      POSTGRES_DB: example
   adminer:
     image: adminer
     restart: always
