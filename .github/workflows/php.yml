@@ -35,7 +35,9 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: Run test suite
-      run: composer run-script unit-test
+      run: |
+        bin/console doctrine:migrations:migrate --env=test
+        composer run-script test
 
     - name: Run phpcs
       run: ./vendor/bin/phpcs
