@@ -6,7 +6,7 @@ use App\Entity\Product;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
-class CalculatorTest extends TestCase
+class ProductTest extends TestCase
 {
     public function testUuids()
     {

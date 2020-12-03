@@ -1,5 +1,7 @@
 {
     "type": "project",
+    "name": "elmariachi111/okommerce",
+    "description": "A fake project to demonstrate monorepo PHP / SPA CI/CD workflows",
     "license": "proprietary",
     "minimum-stability": "dev",
     "prefer-stable": true,
