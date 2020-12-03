@@ -31,11 +31,6 @@ class Product
      */
     private $description;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getUid(): ?string
     {
         return $this->uid;
