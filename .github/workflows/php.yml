@@ -13,7 +13,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: apps/okommerce
+        working-directory: apps/zett
     steps:
     - uses: actions/checkout@v2
 

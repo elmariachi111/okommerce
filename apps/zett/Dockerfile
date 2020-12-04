@@ -8,13 +8,13 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
-WORKDIR /var/www/html/okommerce
+WORKDIR /var/www/html/zett
 
 COPY . .
 
 RUN set -eux; \
     mkdir -p var/cache var/log; \
-    composer install --prefer-dist --no-progress --no-interaction; \
+    composer install --prefer-dist --no-progress --no-dev --no-interaction; \
     composer clear-cache; \
     composer dump-autoload --classmap-authoritative --no-dev; \
     composer symfony:dump-env prod; \
