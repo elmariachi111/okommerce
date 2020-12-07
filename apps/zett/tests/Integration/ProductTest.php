@@ -27,7 +27,6 @@ class ProductTest extends KernelTestCase
     public function testCreateProduct()
     {
         $product = new Product();
-        $product->setUid(Uuid::v4());
         $product->setTitle("Foo Product");
         $product->setDescription("Foo Descr");
         $product->setSku("1234567");
@@ -40,14 +39,13 @@ class ProductTest extends KernelTestCase
         $productCount = $repo->findAll();
         $this->assertEquals(1, count($productCount));
 
-        $foundProduct = $repo->findOneBy([]);
+        $foundProduct = $repo->find($product->getUid());
         $this->assertSame($foundProduct->getSku(), $product->getSku());
     }
 
     public function testCreateAnotherProduct()
     {
         $product = new Product();
-        $product->setUid(Uuid::v4());
         $product->setTitle("w00t Product");
         $product->setDescription("w00t Descr");
         $product->setSku("7654321");

@@ -1,0 +1,28 @@
+@protocol = http
+@hostname = localhost
+@port = 8080
+@baseUrl = {{protocol}}://{{hostname}}:{{port}}
+
+
+POST {{baseUrl}}/product HTTP/1.1
+Content-Type: "application/json"
+Accept: "application/json"
+
+{
+  "sku": "AB-123456",
+  "title":"Jasmine Tea",
+  "description": "tasty tea!"
+}
+
+###
+
+@uuid = 
+
+POST {{baseUrl}}/product/{{uuid}} HTTP/1.1
+Content-Type: "application/json"
+Accept: "application/json"
+
+{
+  "title": "the new tea."
+}
+
