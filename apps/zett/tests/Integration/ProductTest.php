@@ -39,7 +39,7 @@ class ProductTest extends KernelTestCase
         $productCount = $repo->findAll();
         $this->assertEquals(1, count($productCount));
 
-        $foundProduct = $repo->findOneBy([]);
+        $foundProduct = $repo->find($product->getUid());
         $this->assertSame($foundProduct->getSku(), $product->getSku());
     }
 
