@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Product;
 use Nelmio\Alice\FixtureBuilder\DenormalizerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -49,12 +50,35 @@ class ProductController extends AbstractController
     {
         $product = $this->serializer->denormalize($req->toArray(), Product::class);
 
-        //$em->persist($product);
+        $this->em->persist($product);
+        $this->em->flush();
 
         return new JsonResponse(
             $this->serializer->normalize([
                 "status" => "persisted",
                 "product" => $product
+            ])
+        );
+    }
+
+    /**
+     * @Route("/{uuid}", methods={"POST"}, name="update")
+     */
+    public function update(Request $req, string $uuid): Response
+    {
+        $repo = $this->em->getRepository(Product::class);
+        $product = $repo->find($uuid);
+
+        $updated = $this->serializer->denormalize($req->toArray(), Product::class, null, [
+            AbstractNormalizer::OBJECT_TO_POPULATE => $product
+        ]);
+
+        $this->em->flush();
+
+        return new JsonResponse(
+            $this->serializer->normalize([
+                "status" => "updated",
+                "product" => $updated
             ])
         );
     }
