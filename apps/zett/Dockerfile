@@ -7,6 +7,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PATH="${PATH}:/root/.composer/vendor/bin"
+ARG APP_ENV="dev"
 
 WORKDIR /var/www/html/zett
 
