@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  labels:
+    tier: backend
+data:
+  config: |
+    server {
+      server_name _;
+      root /var/www/html;
+      
+      location / {
+          include fastcgi_params;
+          fastcgi_param SCRIPT_FILENAME /var/www/html/zett/public/index.php$args;
+          fastcgi_index index.php;
+          fastcgi_pass zett:9000;
+      }
+    }

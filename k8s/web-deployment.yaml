@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: nginx
+        tier: backend
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: nginx-config
+            items:
+              - key: config
+                path: zett.conf
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d
+              name: config
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"

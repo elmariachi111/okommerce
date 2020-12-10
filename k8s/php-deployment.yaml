@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zett
+  labels:
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zett
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: zett
+        tier: backend
+    spec:
+      containers:
+        - name: zett
+          image: zett:0.1
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"

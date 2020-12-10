@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: zett
+  labels:
+    tier: backend
+spec:
+  selector:
+    app: zett
+    tier: backend
+  ports:
+    - protocol: TCP
+      port: 9000
