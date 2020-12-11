@@ -19,6 +19,11 @@ spec:
       containers:
         - name: zett
           image: zett:0.1
+          env:
+            - name: APP_ENV
+              value: "prod"
+            - name: DATABASE_URL
+              value: "postgresql://zett:example@postgres:5432/zett?serverVersion=13&charset=utf8"
           resources:
             limits:
               memory: "256Mi"

@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  labels:
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: postgres
+        tier: backend
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:13
+          env:
+            - name: POSTGRES_USER
+              value: "zett"
+            - name: POSTGRES_PASSWORD
+              value: "example"
+            - name: POSTGRES_DB
+              value: "zett"
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresdb
+      volumes:
+        - name: postgresdb
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim
